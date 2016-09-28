@@ -4,7 +4,7 @@ player1_total = 0
 player2_total = 0
 
 def turn(total):
-    print "\nStart turn!"
+    print "Start turn!"
     hold = False
     while hold == False:
         a = randrange(1, 7)
@@ -57,10 +57,10 @@ while input == False:
 			for i in player:
 				if above100 == False:
 					current_player = player[i]
-					current_score = scores[current_player - 1]
+					current_score = scores[current_player]
 					current_player = int(current_player)
 					actual_player = current_player + 1
-					print "Press enter when ready to start player %d's turn.\n" % actual_player
+					print "Press enter when ready to start player %d's turn." % actual_player
 					raw_input()
 					current_score = turn(current_score)
 					scores[current_player] = current_score
@@ -69,8 +69,10 @@ while input == False:
 		for i in player:
 			if i > 100:
 				playerwins = player[i]
+				
+		playerwins_real = playerwins + 1
 		
-		print "Player %d wins!" % playerwins
+		print "Player %d wins!" % playerwins_real
 		print "Here are the scores:"
 		for i in player:
 			current_player = player[i]
