@@ -53,6 +53,9 @@ while input == False:
 		
 		print player
 			
+		for i in scores:
+			scores[i] = 0
+		
 		while above100 == False:
 			for i in player:
 				if above100 == False:
