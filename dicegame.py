@@ -43,46 +43,53 @@ while input == False:
 	players = raw_input("Type number of players (2+):\n")
 
 	if players.isdigit():
-		input = True
-		playerwins = 0
-		player = []
-		scores = []
-		for i in range(0, int(players)):
-			player.append(i)
-			scores.append(i)
+		if players >= '2':
+			input = True
+			playerwins = 0
+			player = []
+			scores = []
+			for i in range(0, int(players)):
+				player.append(i)
+				scores.append(i)
 		
-		print player
+			print player
 			
-		for i in scores:
-			scores[i] = 0
+			for i in scores:
+				scores[i] = 0
 		
-		while above100 == False:
-			for i in player:
-				if above100 == False:
-					current_player = player[i]
-					current_score = scores[current_player]
-					current_player = int(current_player)
-					actual_player = current_player + 1
-					print "Press enter when ready to start player %d's turn." % actual_player
-					raw_input()
-					current_score = turn(current_score)
-					scores[current_player] = current_score
-					if current_score > 100:
-						above100 = True
-		for i in player:
-			if i > 100:
-				playerwins = player[i]
+			while above100 == False:
+				for i in player:
+					if above100 == False:
+						current_player = player[i]
+						current_score = scores[current_player]
+						current_player = int(current_player)
+						actual_player = current_player + 1
+						print "Press enter when ready to start player %d's turn." % actual_player
+						raw_input()
+						current_score = turn(current_score)
+						scores[current_player] = current_score
+						if current_score >= 100:
+							above100 = True
+				for i in enumerate(scores):
+					if i >= 100:
+						playerwins = i
 				
-		playerwins_real = playerwins + 1
+			int1, int2 = playerwins
+			
+			playerwins_real = int1
 		
-		print "Player %d wins!" % playerwins_real
-		print "Here are the scores:"
-		for i in player:
-			current_player = player[i]
-			actual_score = scores[current_player]
-			actual_player = current_player + 1
-			print "Player %r has a score of %r." % (actual_player, actual_score)
+			print "Player %d wins!" % playerwins_real
+			print "Here are the scores:"
+			for i in player:
+				current_player = player[i]
+				actual_score = scores[current_player]
+				actual_player = current_player + 1
 	
+				print "Player %r has a score of %r." % (actual_player, actual_score)
+	
+		else:
+			print "Not valid input!"
+			input = False
 	else: 
 		print "Not valid input!"
 		input = False
