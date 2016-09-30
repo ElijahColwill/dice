@@ -1,8 +1,7 @@
 from random import randrange
 # Please read README.md
 
-player1_total = 0
-player2_total = 0
+
 
 def turn(total):
     print "Start turn!"
@@ -96,5 +95,6 @@ while input == False:
 
 
 
+		
 
 # 100
