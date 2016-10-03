@@ -1,8 +1,5 @@
-
 from random import randrange
-# Please read README.md
-player1_total = 0
-player2_total = 0
+import input
 
 def turn(total):
     print "Start turn!"
@@ -26,7 +23,8 @@ def turn(total):
                 total = total + a + b
             else:
                 total = total + a + b
-                hold = raw_input("Hold? Yes or No:\n")
+                print "Hold? Yes or No:"
+                hold = input.scan()
                 if hold == "Yes" or hold == "yes" or hold == "y" or hold == "Y":
                 	hold = True
                 else: hold = False
@@ -36,29 +34,26 @@ def turn(total):
 
 print "Welcome to Pig (two dice version)!\n"
 
-input = False
+input1 = False
 above100 = False
 
-while input == False:
-
-	players = raw_input("Type number of players (2+):\n")
-
-	if players.isdigit():
-		if players >= '2':
-			if players < '99999':
-				input = True
+while input1 == False:
+    print "Type number of players (2+):"
+    players = input.scan()
+    if players.isdigit():
+        players = int(players)
+        if players >= 2:
+			if players < 99999:
+				input1 = True
 				playerwins = 0
 				player = []
 				scores = []
 				for i in range(0, int(players)):
 					player.append(i)
 					scores.append(i)
-
 				print player
-
 				for i in scores:
 					scores[i] = 0
-
 				while above100 == False:
 					for i in player:
 						if above100 == False:
@@ -66,14 +61,12 @@ while input == False:
 							current_score = scores[player[i]]
 							current_player = int(current_player)
 							print "Press enter when ready to start player %d's turn." % current_player
-							raw_input()
+							input.scan()
 							current_score = turn(current_score)
 							scores[player[i]] = current_score
 							if current_score >= 100:
 								above100 = True
 							playerwins = player[i]
-
-
 				print "Player %d wins!" % (playerwins + 1)
 				print "Here are the scores:"
 				for i in player:
@@ -81,20 +74,12 @@ while input == False:
 					actual_score = scores[current_player]
 					actual_player = current_player + 1
 					print "Player %r has a score of %r." % (actual_player, actual_score)
-
 			else:
-				print "Not valid input!"
-				input = False
-
-		else:
-			print "Not valid input!"
-			input = False
-	else:
-		print "Not valid input!"
-		input = False
-
-
-
-
-
-# 100
+				print "Not valid input! Please enter a whole number between 2 and 9999."
+				input1 = False
+        else:
+			print "Not valid input! Please enter a whole number between 2 and 9999."
+			input1 = False
+    else:
+		print "Not valid input! Please enter a whole number between 2 and 9999."
+		input1 = False
